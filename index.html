@@ -3,196 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giải Pháp & Thiết Bị Công Nghệ - Máy Tính, Máy In, Mạng & Camera</title>
+    <title>CÔNG TY TNHH TMDV VI TÍNH QUỐC VIỆT - Thiết Bị IT & Giải Pháp Mạng, Camera</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: #f4f6f9; color: #333; line-height: 1.6; }
         
-        /* Header & Navigation */
-        header { background: #003366; color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; wrap: flex-wrap; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-size: 24px; font-weight: bold; color: #ff9900; }
-        .search-bar { display: flex; flex: 1; max-width: 500px; margin: 0 20px; }
-        .search-bar input { width: 100%; padding: 10px 15px; border: none; border-radius: 4px 0 0 4px; outline: none; }
-        .search-bar button { padding: 10px 20px; border: none; background: #ff9900; color: #fff; font-weight: bold; cursor: pointer; border-radius: 0 4px 4px 0; }
-        .header-actions { display: flex; gap: 20px; align-items: center; }
-        .cart-btn { background: #0055a5; color: #fff; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-weight: bold; }
-        
-        nav { background: #002244; padding: 10px 5%; }
+        /* Header & Bar */
+        .top-bar { background: #001f3f; color: #fff; font-size: 13px; padding: 6px 5%; display: flex; justify-content: space-between; align-items: center; }
+        header { background: #003366; color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); flex-wrap: wrap; }
+        .logo-title { font-size: 22px; font-weight: bold; color: #ff9900; text-transform: uppercase; text-decoration: none; }
+        .search-box { display: flex; flex: 1; max-width: 480px; margin: 0 20px; }
+        .search-box input { width: 100%; padding: 10px 15px; border: none; border-radius: 4px 0 0 4px; outline: none; }
+        .search-box button { padding: 10px 20px; border: none; background: #ff9900; color: #fff; font-weight: bold; cursor: pointer; border-radius: 0 4px 4px 0; }
+        .cart-btn { background: #0055a5; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 14px; }
+
+        /* Nav */
+        nav { background: #002244; padding: 10px 5%; border-top: 1px solid rgba(255,255,255,0.1); }
         nav ul { display: flex; list-style: none; gap: 20px; overflow-x: auto; white-space: nowrap; }
-        nav a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 500; }
+        nav a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; }
         nav a:hover { color: #ff9900; }
 
-        /* Hero Banner */
-        .hero { background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; color: #fff; text-align: center; padding: 80px 20px; }
-        .hero h1 { font-size: 36px; margin-bottom: 15px; }
-        .hero p { font-size: 18px; margin-bottom: 25px; max-width: 700px; margin-left: auto; margin-right: auto; }
-        .btn-primary { background: #ff9900; color: #fff; padding: 12px 30px; text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 5px; display: inline-block; border: none; cursor: pointer; }
-        .btn-primary:hover { background: #e68a00; }
+        /* Banner */
+        .hero { background: linear-gradient(rgba(0,31,63,0.85), rgba(0,31,63,0.85)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80'); background-size: cover; color: #fff; text-align: center; padding: 60px 20px; }
+        .hero h1 { font-size: 30px; margin-bottom: 10px; color: #ff9900; }
+        .hero h2 { font-size: 18px; font-weight: normal; margin-bottom: 20px; color: #e0e0e0; }
+        .btn-main { background: #ff9900; color: #fff; padding: 10px 25px; text-decoration: none; font-size: 15px; font-weight: bold; border-radius: 4px; display: inline-block; }
 
-        /* Main Layout */
-        .container { display: flex; padding: 30px 5%; gap: 30px; }
+        /* Layout */
+        .container { display: flex; padding: 30px 5%; gap: 25px; }
         
-        /* Sidebar Filter */
-        aside { width: 250px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); height: fit-content; }
-        aside h3 { font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #ff9900; padding-bottom: 5px; color: #003366; }
-        .filter-group { margin-bottom: 20px; }
-        .filter-group h4 { font-size: 14px; margin-bottom: 10px; color: #666; }
-        .filter-group label { display: block; margin-bottom: 8px; font-size: 14px; cursor: pointer; }
+        /* Sidebar */
+        aside { width: 240px; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); height: fit-content; }
+        aside h3 { font-size: 16px; margin-bottom: 12px; border-bottom: 2px solid #ff9900; padding-bottom: 5px; color: #003366; }
+        .filter-group label { display: block; margin-bottom: 8px; font-size: 13px; cursor: pointer; color: #444; }
 
-        /* Product Grid */
+        /* Products Grid */
         main { flex: 1; }
-        .section-title { font-size: 22px; color: #003366; margin-bottom: 20px; border-left: 4px solid #ff9900; padding-left: 10px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        .product-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .product-img { width: 100%; height: 180px; object-fit: cover; background: #eee; }
-        .product-info { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
-        .product-title { font-size: 15px; font-weight: bold; margin-bottom: 8px; color: #222; }
-        .product-specs { font-size: 12px; color: #777; margin-bottom: 12px; }
-        .product-price { font-size: 16px; color: #d9534f; font-weight: bold; margin-top: auto; margin-bottom: 12px; }
-        .card-actions { display: flex; gap: 8px; }
-        .btn-sm { flex: 1; padding: 8px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; text-align: center; font-weight: bold; }
-        .btn-cart { background: #003366; color: #fff; }
-        .btn-quote { background: #eef5ff; color: #003366; border: 1px solid #003366; }
+        .section-header { font-size: 20px; color: #003366; margin-bottom: 20px; border-left: 4px solid #ff9900; padding-left: 10px; font-weight: bold; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+        .product-card { background: #fff; border-radius: 6px; border: 1px solid #e1e8ed; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: 0.2s; }
+        .product-card:hover { border-color: #ff9900; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .product-img { width: 100%; height: 170px; object-fit: cover; background: #fafafa; }
+        .product-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-title { font-size: 14px; font-weight: bold; margin-bottom: 6px; color: #222; line-height: 1.3; height: 38px; overflow: hidden; }
+        .product-specs { font-size: 12px; color: #666; margin-bottom: 10px; height: 34px; overflow: hidden; }
+        .product-price { font-size: 15px; color: #d9534f; font-weight: bold; margin-top: auto; margin-bottom: 10px; }
+        .btn-group { display: flex; gap: 6px; }
+        .btn-action { flex: 1; padding: 7px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; text-align: center; }
+        .btn-cart-act { background: #003366; color: #fff; }
+        .btn-quote-act { background: #eef5ff; color: #003366; border: 1px solid #003366; }
 
-        /* Services Section */
-        .services { background: #fff; padding: 40px 5%; margin-top: 40px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .service-card { padding: 20px; border: 1px solid #e1e8ed; border-radius: 8px; text-align: center; }
-        .service-card h3 { color: #003366; margin-bottom: 10px; }
+        /* Services */
+        .services-sec { background: #fff; padding: 30px 5%; margin-top: 30px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 15px; }
+        .service-card { padding: 20px; border: 1px dashed #003366; border-radius: 6px; background: #f8faff; text-align: center; }
+        .service-card h3 { color: #003366; margin-bottom: 8px; font-size: 16px; }
 
         /* Footer */
-        footer { background: #001f3f; color: #ccc; padding: 40px 5% 20px; margin-top: 50px; font-size: 14px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .footer-col h4 { color: #fff; margin-bottom: 15px; font-size: 16px; }
+        footer { background: #001f3f; color: #ccc; padding: 35px 5% 15px; margin-top: 40px; font-size: 13px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-bottom: 25px; }
+        .footer-col h4 { color: #fff; margin-bottom: 12px; font-size: 15px; }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li { margin-bottom: 6px; }
         .footer-col a { color: #ccc; text-decoration: none; }
-        .footer-bottom { text-align: center; border-top: 1px solid #003366; padding-top: 20px; color: #888; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; color: #888; }
 
         @media (max-width: 768px) {
             .container { flex-direction: column; }
             aside { width: 100%; }
-            header { flex-direction: column; gap: 15px; }
-            .search-bar { width: 100%; margin: 0; }
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            .search-box { width: 100%; margin: 0; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <span>📍 123/14/17 Đường Số 3, P. Bình Hưng Hòa, TP. Hồ Chí Minh</span>
+        <span>📞 Hotline: <b>0906.770.778</b> | Email: <b>quangnetsoft@gmail.com</b></span>
+    </div>
+
     <!-- Header -->
     <header>
-        <div class="logo">TECH-SOLUTION</div>
-        <div class="search-bar">
-            <input type="text" placeholder="Tìm máy tính, máy in, camera, thiết bị mạng...">
+        <a href="#" class="logo-title">VI TÍNH QUỐC VIỆT</a>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm kiếm máy tính, máy in, camera, wifi...">
             <button>Tìm kiếm</button>
         </div>
-        <div class="header-actions">
-            <span>Hotline: <b>0906.770.778</b></span>
-            <a href="#" class="cart-btn">Giỏ hàng (<span id="cart-count">0</span>)</a>
-        </div>
+        <a href="#" class="cart-btn">Giỏ hàng (<span id="cart-val">0</span>)</a>
     </header>
 
     <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="#">Trang chủ</a></li>
-            <li><a href="#products">Máy tính & PC</a></li>
-            <li><a href="#products">Máy in & Mực in</a></li>
-            <li><a href="#products">Thiết bị Mạng LAN/Wi-Fi</a></li>
-            <li><a href="#products">Camera An Ninh</a></li>
-            <li><a href="#services">Dịch vụ Thi công</a></li>
-            <li><a href="#contact">Liên hệ / Báo giá</a></li>
+            <li><a href="#products">Máy tính Văn Phòng / PC</a></li>
+            <li><a href="#products">Máy in chính hãng</a></li>
+            <li><a href="#products">Thiết bị Mạng LAN & Wi-Fi</a></li>
+            <li><a href="#products">Camera Giám Sát</a></li>
+            <li><a href="#services">Dịch vụ Thi công & Bảo trì</a></li>
+            <li><a href="#contact">Liên hệ Báo giá</a></li>
         </ul>
     </nav>
 
     <!-- Hero Banner -->
     <section class="hero">
-         <h1 style="font-weight: bold; color: red;">CÔNG TY TNHH TMDV VI TÍNH QUỐC VIỆT</h1>
-		  <p>123/14/17 Đường Số 3, Phường Bình Hưng Hòa, Thành phố Hồ Chí MInh, Việt Nam</p>
-		<h1>Giải Pháp Công Nghệ & Thiết Bị Văn Phòng Trọn Gói</h1>
-        <p>Cung cấp máy tính, máy in, lắp đặt hệ thống mạng nội bộ và camera giám sát chuyên nghiệp cho doanh nghiệp & gia đình.</p>
-        <a href="#services" class="btn-primary">Tư vấn & Báo giá thi công</a>
+        <h1>CÔNG TY TNHH TMDV VI TÍNH QUỐC VIỆT</h1>
+        <h2>Chuyên Cung Cấp Thiết Bị CNTT - Văn Phòng - Hệ Thống Mạng Nội Bộ & Camera An Ninh</h2>
+        <a href="#contact" class="btn-main">Yêu Cầu Báo Giá Doanh Nghiệp</a>
     </section>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Sidebar Filter -->
+        <!-- Sidebar -->
         <aside>
-            <h3>Bộ lọc sản phẩm</h3>
+            <h3>Danh mục sản phẩm</h3>
             <div class="filter-group">
-                <h4>Danh mục chính</h4>
-                <label><input type="checkbox" checked> Tất cả sản phẩm</label>
-                <label><input type="checkbox"> Máy tính văn phòng / Đồ họa</label>
-                <label><input type="checkbox"> Máy in Laser / In màu</label>
-                <label><input type="checkbox"> Router / Switch / Wifi</label>
+                <label><input type="checkbox" checked> Tất cả danh mục</label>
+                <label><input type="checkbox"> Máy tính / PC Đồng Bộ</label>
+                <label><input type="checkbox"> Máy in Laser / In Phun</label>
+                <label><input type="checkbox"> Router / Switch Mạng</label>
                 <label><input type="checkbox"> Camera IP / Đầu ghi</label>
             </div>
+            <h3 style="margin-top: 20px;">Thương hiệu</h3>
             <div class="filter-group">
-                <h4>Thương hiệu</h4>
-                <label><input type="checkbox"> HP / Canon / Dell</label>
-                <label><input type="checkbox"> Cisco / TP-Link / Ruijie</label>
+                <label><input type="checkbox"> HP / Canon / Epson</label>
+                <label><input type="checkbox"> Intel / Dell / Asus</label>
                 <label><input type="checkbox"> Hikvision / Dahua</label>
+                <label><input type="checkbox"> Cisco / TP-Link / Ruijie</label>
             </div>
         </aside>
 
-        <!-- Product Grid -->
+        <!-- Product Grid (Dữ liệu giá cập nhật từ TNC) -->
         <main id="products">
-            <h2 class="section-title">Sản phẩm nổi bật</h2>
+            <h2 class="section-header">Sản Phẩm Bán Chạy Giá Cập Nhật</h2>
             <div class="product-grid">
                 
-                <!-- Product 1 -->
+                <!-- SP 1: PC Văn Phòng -->
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=400&q=80" alt="PC Văn phòng" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=400&q=80" alt="PC Office" class="product-img">
                     <div class="product-info">
-                        <div class="product-title">PC Văn Phòng Core i5 / RAM 16GB / SSD 512GB</div>
-                        <div class="product-specs">CPU Core i5, RAM 16GB, SSD NVMe 512GB, Kèm phím chuột</div>
-                        <div class="product-price">9.500.000 đ</div>
-                        <div class="card-actions">
-                            <button class="btn-sm btn-cart" onclick="addToCart()">Thêm giỏ</button>
-                            <button class="btn-sm btn-quote">Báo giá</button>
+                        <div class="product-title">PC Văn Phòng Intel Core i5 / RAM 8GB / SSD 256GB</div>
+                        <div class="product-specs">Main B560, Core i5-10400, RAM 8GB, SSD 256GB, Màn 24 inch</div>
+                        <div class="product-price">10.590.000 đ</div>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
+                <!-- SP 2: Máy in Canon LBP 6030 -->
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=400&q=80" alt="Máy in Canon" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=400&q=80" alt="Máy in Canon 6030" class="product-img">
                     <div class="product-info">
-                        <div class="product-title">Máy in Canon LBP 2900 Laser Đơn Năng</div>
-                        <div class="product-specs">In đen trắng A4, Tốc độ 12 trang/phút, Khay 150 tờ</div>
-                        <div class="product-price">4.250.000 đ</div>
-                        <div class="card-actions">
-                            <button class="btn-sm btn-cart" onclick="addToCart()">Thêm giỏ</button>
-                            <button class="btn-sm btn-quote">Báo giá</button>
+                        <div class="product-title">Máy In Laser Đen Trắng Canon LBP 6030</div>
+                        <div class="product-specs">Tốc độ 18 trang/phút, Khổ A4, Kết nối USB 2.0 (Bao gồm VAT)</div>
+                        <div class="product-price">3.249.000 đ</div>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
+                <!-- SP 3: Máy in Epson L3250 -->
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=400&q=80" alt="Switch Mạng" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80" alt="Máy in Epson L3250" class="product-img">
                     <div class="product-info">
-                        <div class="product-title">Switch Cisco 24 Port Gigabit Quản Lý Mạng</div>
-                        <div class="product-specs">24 cổng 10/100/1000Mbps, Hỗ trợ VLAN, Chuẩn Rack 1U</div>
+                        <div class="product-title">Máy In Phun Màu Đa Năng Epson EcoTank L3250</div>
+                        <div class="product-specs">In, Copy, Scan, Kết nối Wi-Fi & USB 2.0, Độ phân giải 5760x1440</div>
+                        <div class="product-price">4.589.000 đ</div>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SP 4: Máy in HP LaserJet MFP 4103fdw -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1589492477829-5e65395b66cc?auto=format&fit=crop&w=400&q=80" alt="Máy in HP 4103fdw" class="product-img">
+                    <div class="product-info">
+                        <div class="product-title">Máy In Đa Năng HP LaserJet Pro MFP 4103fdw</div>
+                        <div class="product-specs">In, Copy, Scan, Fax, Tốc độ 40 trang/phút, In 2 mặt, Wi-Fi/LAN</div>
+                        <div class="product-price">11.889.000 đ</div>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SP 5: Switch Mạng Cisco -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=400&q=80" alt="Switch Mạng Cisco" class="product-img">
+                    <div class="product-info">
+                        <div class="product-title">Switch Cisco Business 24 Cổng Gigabit Mạng LAN</div>
+                        <div class="product-specs">24 Port 10/100/1000Mbps, Chuẩn Rack 1U, Hỗ trợ quản lý VLAN</div>
                         <div class="product-price">3.800.000 đ</div>
-                        <div class="card-actions">
-                            <button class="btn-sm btn-cart" onclick="addToCart()">Thêm giỏ</button>
-                            <button class="btn-sm btn-quote">Báo giá</button>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
+                <!-- SP 6: Bộ Camera IP Hikvision -->
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=400&q=80" alt="Camera IP" class="product-img">
+                    <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=400&q=80" alt="Camera Hikvision" class="product-img">
                     <div class="product-info">
-                        <div class="product-title">Bộ Camera IP Hikvision 4MP + Đầu Ghi 4 Kênh</div>
-                        <div class="product-specs">Độ phân giải 2K, Hồng ngoại 30m, Kháng nước IP67</div>
+                        <div class="product-title">Bộ 4 Camera IP Hikvision 4MP + Đầu Ghi 4 Kênh</div>
+                        <div class="product-specs">Độ phân giải 2K, Hồng ngoại 30m, Ổ cứng 1TB, Quan sát qua điện thoại</div>
                         <div class="product-price">5.600.000 đ</div>
-                        <div class="card-actions">
-                            <button class="btn-sm btn-cart" onclick="addToCart()">Thêm giỏ</button>
-                            <button class="btn-sm btn-quote">Báo giá</button>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
                         </div>
                     </div>
                 </div>
@@ -202,20 +229,20 @@
     </div>
 
     <!-- Services -->
-    <section class="services" id="services">
-        <h2 class="section-title" style="text-align: center;">Dịch vụ Giải pháp IT & Thi công Trọn gói</h2>
+    <section class="services-sec" id="services">
+        <h2 class="section-header" style="text-align: center; border-left: none;">Dịch Vụ Kỹ Thuật Trọn Gói Cho Doanh Nghiệp</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>Thi công Mạng LAN / Wi-Fi</h3>
-                <p>Tư vấn, thiết kế và đi dây mạng chuẩn thẩm mỹ cho văn phòng, nhà xưởng, tòa nhà.</p>
+                <h3>Thi Công Mạng Nội Bộ (LAN / Wi-Fi)</h3>
+                <p>Tư vấn giải pháp, đi dây mạng chuẩn thẩm mỹ và tối ưu băng thông cho văn phòng, nhà xưởng.</p>
             </div>
             <div class="service-card">
-                <h3>Lắp đặt Camera Giám sát</h3>
-                <p>Hệ thống camera an ninh tích hợp AI, quan sát từ xa qua điện thoại/máy tính 24/7.</p>
+                <h3>Lắp Đặt Camera Giám Sát An Ninh</h3>
+                <p>Hệ thống camera IP/Analog quan sát 24/7, tích hợp xem qua điện thoại và lưu trữ an toàn.</p>
             </div>
             <div class="service-card">
-                <h3>Bảo trì Máy tính & Máy in</h3>
-                <p>Hợp đồng bảo trì định kỳ hệ thống CNTT văn phòng, khắc phục sự cố tận nơi nhanh chóng.</p>
+                <h3>Bảo Trì Máy Tính & Máy In Nơi Sử Dụng</h3>
+                <p>Hợp đồng bảo trì định kỳ CNTT văn phòng, nạp mực máy in, xử lý sự cố tận nơi nhanh chóng.</p>
             </div>
         </div>
     </section>
@@ -224,35 +251,36 @@
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>Về Chúng Tôi</h4>
-                <p>Chuyên cung cấp thiết bị công nghệ, giải pháp mạng nội bộ, máy in văn phòng và camera an ninh chất lượng cao.</p>
+                <h4>VI TÍNH QUỐC VIỆT</h4>
+                <p>CÔNG TY TNHH TMDV VI TÍNH QUỐC VIỆT</p>
+                <p>Địa chỉ: 123/14/17 Đường Số 3, Phường Bình Hưng Hòa, TP. Hồ Chí Minh</p>
             </div>
             <div class="footer-col">
-                <h4>Hỗ Trợ Khách Hàng</h4>
+                <h4>Hỗ Trợ & Chính Sách</h4>
                 <ul>
-                    <li><a href="#">Chính sách bảo hành</a></li>
-                    <li><a href="#">Chính sách đổi trả</a></li>
-                    <li><a href="#">Phương thức thanh toán</a></li>
-                    <li><a href="#">Quy trình xuất hóa đơn VAT</a></li>
+                    <li><a href="#">Chính sách bảo hành tận nơi</a></li>
+                    <li><a href="#">Quy định đổi trả hàng hoá</a></li>
+                    <li><a href="#">Hướng dẫn xuất hóa đơn VAT</a></li>
+                    <li><a href="#">Phương thức thanh toán / Chuyển khoản</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Liên Hệ</h4>
-                <p>Địa chỉ: TP. Hồ Chí Minh, Việt Nam</p>
-                <p>Email: quangnetsoft@gmail.com</p>
-                <p>Hotline: 0906.770.778</p>
+                <h4>Thông Tin Liên Hệ</h4>
+                <p>Hotline / Zalo: <b>0906.770.778</b></p>
+                <p>Email: <b>quangnetsoft@gmail.com</b></p>
+                <p>Giờ làm việc: 8:00 - 17:30 (Thứ 2 - Thứ 7)</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 TECH-SOLUTION. Bản quyền thuộc về Cửa hàng / Doanh nghiệp.</p>
+            <p>&copy; 2026 VI TÍNH QUỐC VIỆT. Tất cả quyền được bảo lưu.</p>
         </div>
     </footer>
 
     <script>
-        let cartCount = 0;
-        function addToCart() {
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
+        let count = 0;
+        function addCart() {
+            count++;
+            document.getElementById('cart-val').innerText = count;
             alert('Đã thêm sản phẩm vào giỏ hàng!');
         }
     </script>

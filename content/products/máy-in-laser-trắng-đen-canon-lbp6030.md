@@ -1,5 +1,5 @@
 ---
-title: Máy in laser trắng đen Canon LBP6030
+title: Máy in laser  Canon LBP6030
 category: may-in
 specs: "Thông tin chung Thương hiệu Canon Bảo hành 12 tháng Nhu cầu Văn phòng
   Cấu hình chi tiết Chức năng In Kiểu máy in In laser trắng đen , In 1 mặt Độ

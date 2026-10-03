@@ -276,13 +276,43 @@
         </div>
     </footer>
 
-    <script>
-        let count = 0;
-        function addCart() {
-            count++;
-            document.getElementById('cart-val').innerText = count;
-            alert('Đã thêm sản phẩm vào giỏ hàng!');
-        }
-    </script>
+   <script>
+    // 1. Quản lý giỏ hàng
+    let count = 0;
+    function addCart() {
+        count++;
+        document.getElementById('cart-val').innerText = count;
+        alert('Đã thêm sản phẩm vào giỏ hàng!');
+    }
+
+    // 2. Hàm tải danh sách sản phẩm từ localStorage
+    function loadProducts() {
+        const productContainer = document.querySelector('.product-grid');
+        const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+        // Nếu có sản phẩm trong Admin nhập vào thì hiển thị thêm
+        savedProducts.forEach(prod => {
+            const cardHTML = `
+                <div class="product-card">
+                    <img src="${prod.image || 'https://via.placeholder.com/400x170'}" alt="${prod.name}" class="product-img">
+                    <div class="product-info">
+                        <div class="product-title">${prod.name}</div>
+                        <div class="product-specs">${prod.specs || ''}</div>
+                        <div class="product-price">${Number(prod.price).toLocaleString('vi-VN')} đ</div>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            // Chèn sản phẩm mới lên đầu danh sách
+            productContainer.insertAdjacentHTML('afterbegin', cardHTML);
+        });
+    }
+
+    // Tự động chạy khi tải trang
+    window.onload = loadProducts;
+</script>
 </body>
 </html>

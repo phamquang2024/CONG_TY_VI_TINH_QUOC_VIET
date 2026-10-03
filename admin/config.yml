@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   repo: phamquang2024/CONG_TY_VI_TINH_QUOC_VIET
   branch: main
 

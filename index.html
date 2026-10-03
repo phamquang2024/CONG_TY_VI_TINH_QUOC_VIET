@@ -139,7 +139,7 @@
         <main id="products">
             <h2 class="section-header">Sản Phẩm Cập Nhật</h2>
             <div class="product-grid" id="product-list">
-                <!-- Sản phẩm tự động nạp từ Admin tại đây -->
+                <!-- Sản phẩm sẽ tự động load vào đây -->
             </div>
         </main>
     </div>
@@ -200,63 +200,84 @@
             alert('Đã thêm sản phẩm vào giỏ hàng!');
         }
 
-        // Tự động tải sản phẩm từ thư mục content/products/ trên GitHub
-        async function fetchProducts() {
+        // Tạo thẻ HTML cho sản phẩm
+        function renderCard(title, price, specs, image) {
+            if (image && !image.startsWith('http')) {
+                image = '/' + image.replace(/^\//, '');
+            }
+            const formattedPrice = isNaN(price) ? price : Number(price).toLocaleString('vi-VN') + ' đ';
+
+            return `
+                <div class="product-card">
+                    <img src="${image || 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=400&q=80'}" alt="${title}" class="product-img">
+                    <div class="product-info">
+                        <div class="product-title">${title}</div>
+                        <div class="product-specs">${specs || ''}</div>
+                        <div class="product-price">${formattedPrice}</div>
+                        <div class="btn-group">
+                            <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
+                            <button class="btn-action btn-quote-act">Báo giá</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Tải sản phẩm tổng hợp từ cả GitHub và LocalStorage
+        async function loadAllProducts() {
             const container = document.getElementById('product-list');
+            let htmlContent = '';
+
+            // 1. Lấy sản phẩm từ LocalStorage (Admin nhập trực tiếp trên trình duyệt)
+            const localProds = JSON.parse(localStorage.getItem('products')) || [];
+            localProds.forEach(p => {
+                htmlContent += renderCard(p.title || p.name, p.price, p.specs, p.image);
+            });
+
+            // 2. Lấy sản phẩm từ GitHub (nếu có)
             const repoOwner = 'phamquang2024';
             const repoName = 'CONG_TY_VI_TINH_QUOC_VIET';
             const path = 'content/products';
 
             try {
                 const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`);
-                if (!response.ok) throw new Error('Không thể lấy danh sách sản phẩm');
-                
-                const files = await response.json();
-                container.innerHTML = ''; // Xóa dữ liệu cũ
+                if (response.ok) {
+                    const files = await response.json();
+                    for (let file of files) {
+                        if (file.name.endsWith('.md')) {
+                            const res = await fetch(file.download_url);
+                            const content = await res.text();
+                            
+                            const titleMatch = content.match(/title:\s*["']?(.*?)["']?\r?\n/);
+                            const priceMatch = content.match(/price:\s*["']?(.*?)["']?\r?\n/);
+                            const specsMatch = content.match(/specs:\s*["']?(.*?)["']?\r?\n/);
+                            const imageMatch = content.match(/image:\s*["']?(.*?)["']?\r?\n/);
 
-                for (let file of files) {
-                    if (file.name.endsWith('.md')) {
-                        const res = await fetch(file.download_url);
-                        const content = await res.text();
-                        
-                        // Parse thông tin từ file Markdown
-                        const titleMatch = content.match(/title:\s*["']?(.*?)["']?\r?\n/);
-                        const priceMatch = content.match(/price:\s*["']?(.*?)["']?\r?\n/);
-                        const specsMatch = content.match(/specs:\s*["']?(.*?)["']?\r?\n/);
-                        const imageMatch = content.match(/image:\s*["']?(.*?)["']?\r?\n/);
+                            const title = titleMatch ? titleMatch[1] : 'Sản phẩm mới';
+                            const price = priceMatch ? priceMatch[1] : 'Liên hệ';
+                            const specs = specsMatch ? specsMatch[1] : '';
+                            const image = imageMatch ? imageMatch[1] : '';
 
-                        const title = titleMatch ? titleMatch[1] : 'Sản phẩm mới';
-                        const price = priceMatch ? priceMatch[1] : 'Liên hệ';
-                        const specs = specsMatch ? specsMatch[1] : '';
-                        let image = imageMatch ? imageMatch[1] : '';
-
-                        if (image && !image.startsWith('http')) {
-                            image = '/' + image.replace(/^\//, '');
+                            htmlContent += renderCard(title, price, specs, image);
                         }
-
-                        const card = `
-                            <div class="product-card">
-                                <img src="${image || 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=400&q=80'}" alt="${title}" class="product-img">
-                                <div class="product-info">
-                                    <div class="product-title">${title}</div>
-                                    <div class="product-specs">${specs}</div>
-                                    <div class="product-price">${price} ${isNaN(price) ? '' : 'đ'}</div>
-                                    <div class="btn-group">
-                                        <button class="btn-action btn-cart-act" onclick="addCart()">Thêm giỏ</button>
-                                        <button class="btn-action btn-quote-act">Báo giá</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        container.insertAdjacentHTML('beforeend', card);
                     }
                 }
             } catch (err) {
-                console.error(err);
+                console.log('Chưa kết nối thư mục GitHub Markdown, sử dụng dữ liệu local.');
             }
+
+            // Nếu chưa có sản phẩm nào, hiển thị sản phẩm mặc định
+            if (!htmlContent.trim()) {
+                htmlContent = `
+                    ${renderCard('PC Văn Phòng Intel Core i5 / RAM 8GB / SSD 256GB', '8500000', 'Main B560, Core i5-10400, RAM 8GB, SSD 256GB, Màn 24 inch', 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=400&q=80')}
+                    ${renderCard('Máy In Laser Đen Trắng Canon LBP 6030', '3250000', 'Tốc độ 18 trang/phút, Khổ A4, Kết nối USB 2.0 (Bao gồm VAT)', 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=400&q=80')}
+                `;
+            }
+
+            container.innerHTML = htmlContent;
         }
 
-        window.onload = fetchProducts;
+        window.onload = loadAllProducts;
     </script>
 </body>
 </html>

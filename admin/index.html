@@ -4,26 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trang Quản Trị - Vi Tính Quốc Việt</title>
-  <!-- Nhúng Netlify Identity Widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <!-- Nhúng Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
-  <script>
-    // Khai báo chính xác địa chỉ App Netlify của anh Quang
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.setNetlifyIdentityUrl("https://courageous-froyo-5fc1e4.netlify.app");
-      
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.reload();
-          });
-        }
-      });
-    }
-  </script>
 </body>
 </html>

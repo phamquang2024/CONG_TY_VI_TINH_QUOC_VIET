@@ -12,8 +12,10 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
   <script>
-    // Tự động điều hướng xác thực về app Netlify của anh
+    // Khai báo chính xác địa chỉ App Netlify của anh Quang
     if (window.netlifyIdentity) {
+      window.netlifyIdentity.setNetlifyIdentityUrl("https://courageous-froyo-5fc1e4.netlify.app");
+      
       window.netlifyIdentity.on("init", user => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {

@@ -1,11 +1,9 @@
 backend:
-  name: git-gateway
-  branch: main # Nhánh chính của repository
+  name: github
+  repo: phamquang2024/CONG_TY_VI_TINH_QUOC_VIET # Trỏ trực tiếp về GitHub của anh
+  branch: main
 
-# Thêm địa chỉ Netlify app để Decap CMS kết nối đúng trang xác thực Identity
-site_url: https://courageous-froyo-5fc1e4.netlify.app
-
-media_folder: "images/uploads" # Thư mục chứa hình ảnh sản phẩm tải lên
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:

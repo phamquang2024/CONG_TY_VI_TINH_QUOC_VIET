@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: phamquang2024/CONG_TY_VI_TINH_QUOC_VIET # Trỏ trực tiếp về GitHub của anh
+  repo: phamquang2024/CONG_TY_VI_TINH_QUOC_VIET
   branch: main
 
 media_folder: "images/uploads"

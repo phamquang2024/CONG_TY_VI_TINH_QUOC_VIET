@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main # Nhánh chính của repository
+
+media_folder: "images/uploads" # Thư mục chứa hình ảnh sản phẩm tải lên
+public_folder: "/images/uploads"
+
+collections:
+  - name: "products"
+    label: "Sản phẩm"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tên sản phẩm", name: "title", widget: "string" }
+      - { label: "Danh mục", name: "category", widget: "select", options: ["may-tinh", "may-in", "mang-lan", "camera"] }
+      - { label: "Thông số kỹ thuật tóm tắt", name: "specs", widget: "string" }
+      - { label: "Giá bán (VNĐ)", name: "price", widget: "string" }
+      - { label: "Hình ảnh sản phẩm", name: "image", widget: "image" }
